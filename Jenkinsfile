@@ -2,16 +2,22 @@ pipeline {
     agent any
 
     stages {
+        stage('Check Docker') {
+            steps {
+                bat 'docker --version'
+            }
+        }
+
         stage('Build') {
             steps {
-                sh 'docker build -t crazyloke1-hash/devops-app:v1 .'
+                bat 'docker build -t crazyloke1-hash/devops-app:v1 .'
             }
         }
 
         stage('Push') {
             steps {
-                sh 'docker push crazyloke1-hash/devops-app:v1'
+                bat 'docker push crazyloke1-hash/devops-app:v1'
             }
         }
     }
-} 
+}
