@@ -1,0 +1,5 @@
+AppData/
+OneDrive/
+*.db
+*.log
+__pycache__/
