@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clone Code') {
             steps {
-                git 'https://github.com/crazyloke1-hash/devops-app.git'
+                git branch: 'main', url: 'https://github.com/crazyloke1-hash/devops-app.git'
             }
         }
 
@@ -16,7 +16,7 @@ pipeline {
 
         stage('Push to DockerHub') {
             steps {
-                bat 'docker login -u lokesh1926 -p pB/?pzj5:t&J%FT'
+                bat 'docker login -u lokesh1926 -p YOUR_PASSWORD'
                 bat 'docker push lokesh1926/expense-tracker:v1'
             }
         }
