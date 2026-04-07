@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build Docker Image') {
+            steps {
+                echo "Building Docker Image..."
+                bat 'docker build -t lokesh1926/expense-tracker:v1 .'
+            }
+        }
+
+        stage('Push to DockerHub') {
+            steps {
+                echo "Pushing Image to DockerHub..."
+                bat 'docker push lokesh1926/expense-tracker:v1'
+            }
+        }
+
+    }
+}
