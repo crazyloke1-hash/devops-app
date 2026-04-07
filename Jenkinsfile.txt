@@ -1,4 +1,3 @@
- 
 pipeline {
     agent any
 
@@ -11,14 +10,14 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t lokesh1926/expense-tracker:v1 .'
+                bat 'docker build -t lokesh1926/expense-tracker:v1 .'
             }
         }
 
         stage('Push to DockerHub') {
             steps {
-                sh 'docker login -u lokesh1926 -p pB/?pzj5:t&J%FT'
-                sh 'docker push lokesh1926/expense-tracker:v1'
+                bat 'docker login -u lokesh1926 -p pB/?pzj5:t&J%FT'
+                bat 'docker push lokesh1926/expense-tracker:v1'
             }
         }
     }
