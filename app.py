@@ -6,28 +6,27 @@ app = Flask(__name__)
 def get_conn():
     return sqlite3.connect("expenses.db")
 
-# create table
 conn = get_conn()
 conn.execute("CREATE TABLE IF NOT EXISTS expenses(name TEXT, amount REAL)")
 conn.close()
 
 HTML = """
-<h1>Expense Tracker</h1>
+<h1 style="color:green;">Expense Tracker - Version 3 🚀</h1>
 
 <form method="post" action="/add">
-  Name: <input name="name"><br>
-  Amount: <input name="amount" type="number"><br>
-  <button type="submit">Add</button>
+  Name: <input name="name" required><br><br>
+  Amount: <input name="amount" type="number" required><br><br>
+  <button type="submit">Add Expense</button>
 </form>
 
 <h2>Expenses</h2>
 <ul>
 {% for e in data %}
-  <li>{{e[0]}} - {{e[1]}}</li>
+  <li><b>{{e[0]}}</b> - ₹{{e[1]}}</li>
 {% endfor %}
 </ul>
 
-<h2>Total: {{total}}</h2>
+<h2 style="color:blue;">Total: ₹{{total}}</h2>
 """
 
 @app.route("/")
