@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: expense-tracker-v1
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: expense-tracker
+  template:
+    metadata:
+      labels:
+        app: expense-tracker
+    spec:
+      containers:
+      - name: expense-tracker
+        image: lokesh1926/expense-tracker-1:v1
+        ports:
+        - containerPort: 5000
